@@ -16,12 +16,12 @@ jobs:
         run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
-          docker build -f ./lab1/Dockerfile -t local/node-app:latest ./lab1/
+          docker build -f .Dockerfile -t local/node-app:latest .
           echo -n "verifying images:"
           docker images
       - name: Deploy to minikube
         run: |
-          kubectl apply -f lab1/k8s-node-app.yaml
+          kubectl apply -f k8s-node-app.yaml
           sleep 5
           kubectl get pods
           kubectl get service
